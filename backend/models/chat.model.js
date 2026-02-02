@@ -12,16 +12,12 @@ const chatSchema = new mongoose.Schema(
     title: {
       type: String,
       default: "New Chat",
+      trim: true,
     },
 
     isActive: {
       type: Boolean,
       default: true,
-    },
-
-    startedAt: {
-      type: Date,
-      default: Date.now,
     },
 
     endedAt: {
@@ -30,5 +26,7 @@ const chatSchema = new mongoose.Schema(
   },
   { timestamps: true },
 );
+
+chatSchema.index({ userId: 1, isActive: 1 });
 
 module.exports = mongoose.model("Chat", chatSchema);

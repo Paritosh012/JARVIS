@@ -8,6 +8,7 @@ const connectDB = require("./config/db");
 require("dotenv").config();
 
 const authRoutes = require("./routes/auth.routes");
+const chatRoutes = require("./routes/chat.routes");
 
 const PORT = process.env.PORT || 5000;
 
@@ -28,6 +29,7 @@ app.use(express.json());
 app.use(cookieParser());
 
 app.use("/auth", authRoutes);
+app.use("/chats", chatRoutes);
 
 // initializeSocket(io);
 
